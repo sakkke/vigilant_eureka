@@ -1,6 +1,6 @@
 # Binaries for programs and plugins
 main
-v_standalone_template
+vigilant_eureka
 *.exe
 *.exe~
 *.so

@@ -18,6 +18,6 @@ jobs:
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v3.1.1
         with:
-          name: v_standalone_template
+          name: your_executable_name
           path: |
-            v_standalone_template
+            your_executable_name
