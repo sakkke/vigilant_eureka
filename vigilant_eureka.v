@@ -28,7 +28,7 @@ fn main() {
 fn work() {
 	max := work_dur / update_dur
 
-	for i in 1 .. work_dur / max {
+	for i in 1 .. max {
 		println('work: $i / $max')
 		time.sleep(update_dur)
 		os.system('playerctl next')
