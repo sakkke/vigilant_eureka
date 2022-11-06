@@ -1,0 +1,23 @@
+name: Release
+on:
+  workflow_run:
+    workflows: [Test]
+    type:
+      - completed
+jobs:
+  Build:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Setup Vlang
+        uses: vlang/setup-v@v1.1
+        with:
+          version: 54b623743d12306aac8d0091daf3149299d5fe9e
+      - name: Check out repository code
+        uses: actions/checkout@v3
+      - run: v .
+      - name: GH Release
+        uses: softprops/action-gh-release@v0.1.14
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          files: |
+            v_standalone_template

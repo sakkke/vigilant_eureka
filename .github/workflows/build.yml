@@ -1,0 +1,23 @@
+name: Build
+on:
+  workflow_run:
+    workflows: [Test]
+    type:
+      - completed
+jobs:
+  Build:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Setup Vlang
+        uses: vlang/setup-v@v1.1
+        with:
+          version: 54b623743d12306aac8d0091daf3149299d5fe9e
+      - name: Check out repository code
+        uses: actions/checkout@v3
+      - run: v .
+      - name: Upload a Build Artifact
+        uses: actions/upload-artifact@v3.1.1
+        with:
+          name: v_standalone_template
+          path: |
+            v_standalone_template
